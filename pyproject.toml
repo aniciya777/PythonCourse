@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 poetry-core = "^2.1.2"
+latex-generator-itmo-aniciya = "^0.2.0"
 
 [build-system]
 requires = ["poetry-core"]

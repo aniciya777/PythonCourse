@@ -1,7 +1,8 @@
 import os
-from datetime import date
 from string import Template
-from typing import List
+from typing import List, Any
+
+from .utils import get_date, get_username
 
 TEMPLATE = Template(r"""\documentclass{article}
 \usepackage{graphicx}
@@ -9,11 +10,17 @@ TEMPLATE = Template(r"""\documentclass{article}
 \author{ $user }
 \date{ $date }
 \begin{document}
-$table
+$content
 \end{document}""")
+IMAGE_TEMPLATE = Template(r"""\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{ $path }
+    \caption{ $filename }
+    \label{fig:enter-label}
+\end{figure}""")
 
 
-def generate_table(table: List[List[str]]) -> str:
+def generate_table(table: List[List[Any]]) -> str:
     """
     Generates a latex table from the given list of rows.
 
@@ -35,10 +42,27 @@ def generate_table(table: List[List[str]]) -> str:
     content += r'''         \hline
     \end{tabular}
 \end{table}'''
-
-    user = os.getenv('USER') or os.getenv('USERNAME') or os.getenv('LOGNAME') or ''
     return TEMPLATE.substitute(
-        date=date.today().strftime('%d %B %Y'),
-        user=user,
-        table=content
+        date=get_date(),
+        user=get_username(),
+        content=content
+    )
+
+
+def generate_image(filename: str) -> str:
+    """
+    Generates a latex document with the given image.
+
+    :param filename: filename of the image
+    :return: latex document with image
+    """
+    abs_path = os.path.abspath(filename).replace('\\', '/')
+    only_filename = os.path.basename(filename)
+    return TEMPLATE.substitute(
+        date=get_date(),
+        user=get_username(),
+        content=IMAGE_TEMPLATE.substitute(
+            path=abs_path,
+            filename=only_filename
+        )
     )

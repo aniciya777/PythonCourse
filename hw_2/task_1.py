@@ -1,4 +1,6 @@
-from latex_generator import generate_table
+import os
+
+from latex_generator_itmo_aniciya import generate_table, generate_image
 
 table = [
     ['Version', 'Latest micro version', 'Release Date', 'End of full support', 'End of security fixes'],
@@ -19,3 +21,8 @@ table = [
 
 with open('artifacts/table.tex', 'w', encoding="utf-8") as file:
     print(generate_table(table), file=file)
+os.system(r'pdflatex -output-directory=artifacts -aux-directory=artifacts artifacts\table.tex')
+
+with open('artifacts/image.tex', 'w', encoding="utf-8") as file:
+    print(generate_image('samples/my cats.jpg'), file=file)
+os.system(r'pdflatex -output-directory=artifacts -aux-directory=artifacts artifacts\image.tex')

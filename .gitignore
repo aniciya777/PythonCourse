@@ -2,3 +2,5 @@
 /poetry.lock
 /auxil/
 /out/
+/hw_2/artifacts/*.aux
+/hw_2/artifacts/*.log
