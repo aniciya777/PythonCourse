@@ -1,0 +1,13 @@
+python prog.py
+usage: prog.py [-h] echo
+prog.py: error: the following arguments are required: echo
+python prog.py --help
+usage: prog.py [-h] echo
+
+positional arguments:
+  echo
+
+options:
+  -h, --help  show this help message and exit
+python prog.py foo
+foo

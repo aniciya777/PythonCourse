@@ -1,0 +1,39 @@
+>>> nl -b a samples/2.txt 
+     1	python prog.py
+     2	usage: prog.py [-h] echo
+     3	prog.py: error: the following arguments are required: echo
+     4	python prog.py --help
+     5	usage: prog.py [-h] echo
+     6	
+     7	positional arguments:
+     8	  echo
+     9	
+    10	options:
+    11	  -h, --help  show this help message and exit
+    12	python prog.py foo
+    13	foo
+
+>>> python3 nl.py samples/2.txt 
+     1	python prog.py
+     2	usage: prog.py [-h] echo
+     3	prog.py: error: the following arguments are required: echo
+     4	python prog.py --help
+     5	usage: prog.py [-h] echo
+     6	
+     7	positional arguments:
+     8	  echo
+     9	
+    10	options:
+    11	  -h, --help  show this help message and exit
+    12	python prog.py foo
+    13	foo
+
+>>> printf "a\nb\nc" | nl -b a 
+     1	a
+     2	b
+     3	c
+
+>>> printf "a\nb\nc" | python3 nl.py 
+     1	a
+     2	b
+     3	c

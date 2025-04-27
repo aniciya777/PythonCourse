@@ -1,0 +1,23 @@
+>>> wc samples/2.txt 
+ 13  37 268 samples/2.txt
+
+>>> python3 wc.py samples/2.txt 
+ 13  37 268 samples/2.txt
+
+>>> wc samples/1.txt samples/2.txt samples/3.txt 
+  13   13  172 samples/1.txt
+  13   37  268 samples/2.txt
+  37  255 1961 samples/3.txt
+  63  305 2401 total
+
+>>> python3 wc.py samples/1.txt samples/2.txt samples/3.txt 
+  13   13  172 samples/1.txt
+  13   37  268 samples/2.txt
+  37  255 1961 samples/3.txt
+  63  305 2401 total
+
+>>> printf "1 2 3\na bc def" | wc 
+      1       6      14
+
+>>> printf "1 2 3\na bc def" | python3 wc.py 
+      1       6      14

@@ -1,0 +1,111 @@
+>>> tail samples/1.txt 
+epilog
+parents
+formatter_class
+prefix_chars
+fromfile_prefix_chars
+argument_default
+allow_abbrev
+conflict_handler
+add_help
+exit_on_error
+
+>>> python3 tail.py samples/1.txt 
+epilog
+parents
+formatter_class
+prefix_chars
+fromfile_prefix_chars
+argument_default
+allow_abbrev
+conflict_handler
+add_help
+exit_on_error
+
+>>> tail samples/1.txt samples/2.txt 
+==> samples/1.txt <==
+epilog
+parents
+formatter_class
+prefix_chars
+fromfile_prefix_chars
+argument_default
+allow_abbrev
+conflict_handler
+add_help
+exit_on_error
+
+==> samples/2.txt <==
+python prog.py --help
+usage: prog.py [-h] echo
+
+positional arguments:
+  echo
+
+options:
+  -h, --help  show this help message and exit
+python prog.py foo
+foo
+
+>>> python3 tail.py samples/1.txt samples/2.txt 
+==> samples/1.txt <==
+epilog
+parents
+formatter_class
+prefix_chars
+fromfile_prefix_chars
+argument_default
+allow_abbrev
+conflict_handler
+add_help
+exit_on_error
+
+==> samples/2.txt <==
+python prog.py --help
+usage: prog.py [-h] echo
+
+positional arguments:
+  echo
+
+options:
+  -h, --help  show this help message and exit
+python prog.py foo
+foo
+
+>>> seq 1 20 | tail -n 17 
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+
+>>> seq 1 20 | python3 tail.py 
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
