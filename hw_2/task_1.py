@@ -19,10 +19,10 @@ table = [
     ['3.14',    '3.14.0a7', '2025-10-07',   '2027-05',      '2030-10'],
 ]
 
+if not os.path.exists('artifacts'):
+    os.mkdir('artifacts')
 with open('artifacts/table.tex', 'w', encoding="utf-8") as file:
     print(generate_table(table), file=file)
-os.system(r'pdflatex -output-directory=artifacts -aux-directory=artifacts artifacts\table.tex')
 
 with open('artifacts/image.tex', 'w', encoding="utf-8") as file:
-    print(generate_image('samples/my cats.jpg'), file=file)
-os.system(r'pdflatex -output-directory=artifacts -aux-directory=artifacts artifacts\image.tex')
+    print(generate_image('samples/mycats.jpg'), file=file)
