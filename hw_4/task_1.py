@@ -18,6 +18,13 @@ def fib(n: int) -> int:
 
 
 def time_decorator(function: Callable[[int, int], None]) -> Callable[[int, int], float]:
+    """
+    Декоратор для измерения времени выполнения функции
+
+    :param function: функция для измерения времени выполнения
+    :return: время выполнения функции
+    """
+
     @wraps(function)
     def wrapper(n: int, runs: int) -> float:
         start = time.perf_counter()
