@@ -14,6 +14,7 @@ class Matrix(NDArrayOperatorsMixin, StringMixin, FileIOMixin, PropertyMixin):
     __fields__ = ['array']
     __array_priority__ = 20.0
 
+
     def __init__(self, data):
         self._array = np.array(data)
 
